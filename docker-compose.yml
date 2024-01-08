@@ -6,6 +6,7 @@ services:
       BACKEND_URL: "https://4567-${GITPOD_WORKSPACE_ID}.${GITPOD_WORKSPACE_CLUSTER_HOST}"
       OTEL_EXPORTER_OTLP_ENDPOINT: "https://api.honeycomb.io"
       OTEL_EXPORTER_OTLP_HEADERS: "x-honeycomb-team=${HONEYCOMB_API_KEY}"
+#HONEYCOMB_API_KEY=gp env HONEYCOMB_API_KEY="lkbIRjhz7k65moYFZTDQ9A"7q9J5neivAkfNAmTUueuPW
       OTEL_SERVICE_NAME: "${HONEYCOMB_SERVICE_NAME}"
     build: ./backend-flask
     ports:
