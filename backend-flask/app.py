@@ -32,18 +32,8 @@ from aws_xray_sdk.ext.flask.middleware import XRayMiddleware
 
 #--CloudWatch Logs
 import watchtower
-import logging
+import logging 
 from time import strftime
-
-# Configuring Logger to Use CloudWatch
-LOGGER = logging.getLogger(__name__)
-LOGGER.setLevel(logging.DEBUG)
-console_handler = logging.StreamHandler()
-cw_handler = watchtower.CloudWatchLogHandler(log_group='cruddur')
-LOGGER.addHandler(console_handler)
-LOGGER.addHandler(cw_handler)
-LOGGER.info("Nasser test some message")
-
 
 # Honey Comb ------
 # Initialize tracing and an exporter that can send data to Honeycomb
@@ -85,7 +75,17 @@ cors = CORS(
   methods="OPTIONS,GET,HEAD,POST"
 )
 
+
 #--CloudWatch Logs
+# Configuring Logger to Use CloudWatch
+LOGGER = logging.getLogger(__name__)
+LOGGER.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+cw_handler = watchtower.CloudWatchLogHandler(log_group='Cruddur')
+LOGGER.addHandler(console_handler)
+LOGGER.addHandler(cw_handler)
+LOGGER.info("Nasser test some message")
+
 @app.after_request
 def after_request(response):
     timestamp = strftime('[%Y-%b-%d %H:%M]')
